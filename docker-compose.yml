@@ -1,0 +1,98 @@
+# Dockerfile has been added in all micro-services, you need to dockerize all micro-services and add docker-compose.yml file
+
+version: '3'
+services:
+    userservice:
+    image: userservice:sba
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaServer
+      - mysql
+    ports:
+      - 9300:9300
+    healthcheck:
+      test: "exit 0"
+      
+    favouriteservice:
+    image: favouriteservice:sba
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaServer
+      - mongo
+      - rabbitmq
+    ports:
+      - 9400:9400
+    healthcheck:
+      test: "exit 0"
+
+    bookrecommendationservice:
+    image: bookrecommendationservice:sba
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaServer
+      - mysql
+      - rabbitmq
+    ports:
+      - 9500:9500
+    healthcheck:
+      test: "exit 0"
+
+    eurekaServer:
+    image: eurekaserver:sba
+    restart: always
+    network_mode: host
+    ports:
+      - 8761:8761
+    healthcheck:
+      test: "exit 0"
+  
+    zuulApiGateway:
+    image: zuulapigateway:sba
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaServer
+      - favouriteservice
+      - userservice
+      - bookrecommendationservice
+    ports:
+      - 8079:8079
+    healthcheck:
+      test: "exit 0"
+
+    MyBookUI:
+    image: MyBookUI:sba
+    network_mode: host
+    container_name: angular-docker
+    ports:
+      - 8080:8080 
+    healthcheck:
+      test: "exit 0"
+   
+    mysql:
+    image: mysql:5.5
+    network_mode: host
+    container_name: mysql_container
+    ports:
+      - 3306:3306    
+    environment:
+      MYSQL_DATABASENAME: userDb
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+
+    mongo:
+    image: mongo:4.0
+    network_mode: host
+    container_name: mongo
+    ports:
+      - 27017:27017
+
+    rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"

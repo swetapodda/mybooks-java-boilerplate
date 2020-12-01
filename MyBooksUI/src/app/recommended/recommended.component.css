@@ -1,0 +1,33 @@
+div.book-note-container{
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    flex-flow: row wrap;
+    /* justify-content: space-around; */
+    align-items: left;
+    font-size: 1ch; 
+}
+
+.my-class-name{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* text-size-adjust: 1px; */
+    font-size: 1ch;
+}
+
+img {
+    height: 300px;
+    width: 300px;
+}
+
+.book-title-text {
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+}

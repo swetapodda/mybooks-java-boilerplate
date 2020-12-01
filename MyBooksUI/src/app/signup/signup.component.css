@@ -1,0 +1,23 @@
+.registration-div {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    align-items: center;       
+    margin-left: 20vw;
+    margin-top: 5vw;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;       
+    margin-left: 20vw;
+    margin-top: 5vw;
+}
+.submit-button{
+    width: 10vw;
+    align-self: center;
+    margin-top: 2vh;
+    margin-right: 2vh;
+}

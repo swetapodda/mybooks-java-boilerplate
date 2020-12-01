@@ -1,0 +1,25 @@
+<!-- Label to display any error messages -->
+<div class="registration-div">
+    <label class="error-message">{{ submitMessage }}</label>
+
+    
+
+    <form class="registration-form" (ngSubmit)="registerUser()" style="width:100%;">
+        <mat-form-field>
+            <input matInput placeholder="FirstName" [formControl]="firstName" class="firstName">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="LastName" [formControl]="lastName" class="lastName">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Username" [formControl]="username" class="username">
+        </mat-form-field>
+        <mat-form-field>
+            <input type="password" matInput placeholder="Password" [formControl]="password" class="password">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="submit-button">Register</button>
+        <br>
+        <a href (click)="switchView()">Back to login</a>
+    </form>
+</div>

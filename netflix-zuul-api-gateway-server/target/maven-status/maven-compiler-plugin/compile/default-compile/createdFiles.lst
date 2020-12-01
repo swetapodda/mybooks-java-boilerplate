@@ -1,0 +1,5 @@
+com\stackroute\zuulapiserver\NetflixZuulApiGatewayServerApplication.class
+com\stackroute\zuulapiserver\RouteFilter.class
+com\stackroute\zuulapiserver\ErrorFilter.class
+com\stackroute\zuulapiserver\PostFilter.class
+com\stackroute\zuulapiserver\PreFilter.class
